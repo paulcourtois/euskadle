@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-
+import flag from '../../images/flag.svg'
 const HeaderWrapper = styled.header`
     width: 100%;
+    height: 10%;
     display: flex;
     justify-content: center;
     background-color: #151518;
@@ -16,8 +17,12 @@ const HeaderContent = styled.div`
 `
 
 const MainTitle = styled.h1`
-    color: white;
     padding-left: 20px;
+    background-image: url(${flag});
+    background-position: center;
+    background-size: contain;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 `
 export {
     HeaderWrapper,
