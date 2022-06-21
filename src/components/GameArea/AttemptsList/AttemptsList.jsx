@@ -7,8 +7,8 @@ import Attempt from './Attempt';
 // styles
 import * as S from './styles';
 
-const AttemptsList = ({selected}) => {
-  const displayAttempts = ()=> [0,1,2,3,4].map(i=><Attempt attemptNumber={i} selected={selected}/>)
+const AttemptsList = ({selected, currentLetterValue}) => {
+  const displayAttempts = ()=> [0,1,2,3,4].map(i=><Attempt attemptNumber={i} selected={selected} currentLetterValue={currentLetterValue}/>)
 
   
   return <S.AttemptsWrapper>

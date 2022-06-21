@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const KeyboardWrapper = styled.div`
   max-width: 500px;
   width: 100%;
-  margin: 0 auto;
+  margin-bottom: 20px;
 `;
 
 const KeyboardLine = styled.div`
