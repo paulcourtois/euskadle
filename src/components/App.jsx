@@ -8,10 +8,6 @@ import GameArea from './GameArea';
 // styles 
 import * as S from './styles';
 
-// test import words
-import test from '../../../euskarra-dico/5LettersBasqueWords.json';
-
-console.log(test)
 const App = () => {
     return <S.BodyWrapper>
         <S.GlobalStyle whiteColor />

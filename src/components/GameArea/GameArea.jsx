@@ -1,5 +1,5 @@
 // packages
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // components
 import AttemptsList from './AttemptsList';
@@ -11,16 +11,20 @@ import * as S from './styles';
 const GameArea = () => {
   const [selectedLetter, setSelectedLetter] = useState(0);
   const [selectedAttempt, setSelectedAttempt] = useState(0)
-  const [letterValue, setLetterValue] = useState('');
+  const [wordAttempt, setWordAttempt] = useState(['','','','','']);
+  const [gameState, setGameState] = useState('running');
 
+  console.log(wordAttempt, 'test')
   return <S.GameAreaWrapper>
-    <AttemptsList selected={[selectedLetter,selectedAttempt]} currentLetterValue={letterValue} />
+    <AttemptsList selected={[selectedLetter,selectedAttempt]} wordAttempt={wordAttempt} />
     <Keyboard 
       selectedLetter={selectedLetter}
       setSelectedLetter={setSelectedLetter}
-      setLetterValue={setLetterValue}
       selectedAttempt={selectedAttempt}
       setSelectedAttempt={setSelectedAttempt}
+      wordAttempt={wordAttempt}
+      setWordAttempt={setWordAttempt}
+      setGameState={setGameState}
     />
   </S.GameAreaWrapper>
 };

@@ -10,23 +10,28 @@ import * as S from './styles';
 const Keyboard = ({
   selectedLetter,
       setSelectedLetter,
-      setLetterValue,
       selectedAttempt,
       setSelectedAttempt,
+      wordAttempt,
+      setWordAttempt,
+      setGameState
 }) => {
   const azertyMapping = [
     ['A','Z','E','R','T','Y','U','I','O','P'],
     ['Q','S','D','F','G','H','J','K','L','M'],
-    ['W','X','C','V','B','N']
+    ['return','W','X','C','V','B','N', 'enter']
   ]
-  const displayKeyboard = (mapping) => mapping.map(azertyLine => <S.KeyboardLine>
+  const displayKeyboard = (mapping) => mapping.map(azertyLine => <S.KeyboardLine key={azertyLine[0]}>
     {azertyLine.map(azertyKey=> <KeyInput 
+    key={azertyKey}
     letter={azertyKey} 
     selectedLetter={selectedLetter}
       setSelectedLetter={setSelectedLetter}
-      setLetterValue={setLetterValue}
     selectedAttempt={selectedAttempt}
     setSelectedAttempt={setSelectedAttempt}
+    wordAttempt={wordAttempt}
+    setWordAttempt={setWordAttempt}
+    setGameState={setGameState}
      />)}
   </S.KeyboardLine>)
   

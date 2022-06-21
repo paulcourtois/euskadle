@@ -7,9 +7,9 @@ import AttemptLetter from './AttemptLetter/AttemptLetter';
 // styles
 import * as S from './styles';
 
-const Attempt = ({attemptNumber, selected, currentLetterValue})=> {
+const Attempt = ({attemptNumber, selected, wordAttempt})=> {
   const displayAttemptLetters = () => [0,1,2,3,4].map(i=>
-    <AttemptLetter attemptNumber={attemptNumber} letterNumber={i} selected={selected} currentLetterValue={currentLetterValue} />
+    <AttemptLetter key={i} attemptNumber={attemptNumber} letterNumber={i} selected={selected} wordAttempt={wordAttempt} />
   )
     
 

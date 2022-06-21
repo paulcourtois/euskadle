@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import styleHelper from './helpers/styleHelper';
 
 const Key = styled.div`
   height: 50px;
-  width: 30px;
+  width: ${props=> props.value.length > 1 ? '64px' : '30px'};
   margin: 5px 2px;
-  background-color: #50505d;
+  background-color: ${props=> styleHelper.setKeyboardBabckgroundcolor(props.value)};
   color: white;
   display: flex;
   align-items: center;
@@ -12,7 +13,7 @@ const Key = styled.div`
   cursor: pointer;
   border-radius: 8px;
   :hover{
-    background-color: #33333b;
+    background-color: ${props=> styleHelper.setKeyboardBabckgroundcolor(props.value)}80;
   }
 `;
 
