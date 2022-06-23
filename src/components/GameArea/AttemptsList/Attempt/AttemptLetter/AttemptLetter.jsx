@@ -19,7 +19,10 @@ const AttemptLetter = ({
     letterStatus={letterStatus}
     letterNumber={letterNumber}
   >
-    {wordAttempt[attemptNumber].word[letterNumber]}
+    <S.Letter
+    letterStatus={letterStatus}
+    letterNumber={letterNumber}
+    >{wordAttempt[attemptNumber].word[letterNumber]}</S.Letter>
   </S.LetterWrapper>
 };
 

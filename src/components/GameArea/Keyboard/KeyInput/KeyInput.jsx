@@ -18,7 +18,8 @@ const KeyInput = ({letter,
   setSelectedAttempt,
   wordAttempt,
   setWordAttempt,
-  setGameState
+  setGameState,
+  disabled
 }) => {
 
   const setKeyContent = (key) => {
@@ -31,7 +32,7 @@ const KeyInput = ({letter,
     else return key
   };
 
-  return <S.Key onClick={()=>gameHelper
+  return <S.Key onClick={()=> !disabled && gameHelper
     .handleKeyPressOrKeyboardInput(
       letter, 
       selectedLetter, 
@@ -43,6 +44,7 @@ const KeyInput = ({letter,
       setGameState
     )}
     value={letter}
+    tabIndex="0"   onKeyDown={(event)=> console.log(event)}
     >
     {setKeyContent(letter)}
   </S.Key>

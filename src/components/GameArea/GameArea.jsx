@@ -41,6 +41,7 @@ const GameArea = () => {
       wordAttempt={wordAttempt}
       setWordAttempt={setWordAttempt}
       setGameState={setGameState}
+      disabled={gameState !== 'running'}
     />
   </S.GameAreaWrapper>
 };

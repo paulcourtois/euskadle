@@ -13,7 +13,7 @@ const letterAnimation = keyframes`
 
 const animation = props => props.letterStatus &&
   css`
-    ${letterAnimation} 0.30s linear ${0.15 * props.letterNumber}s;
+    ${letterAnimation} 0.45s linear ${0.25 * props.letterNumber}s;
   `
 
 const LetterWrapper = styled.div`
@@ -21,19 +21,25 @@ const LetterWrapper = styled.div`
   height: 50px;
   border: 3px solid ${props=> styleHelper.setLetterBorderColor(props)};
   background-color: ${props=> styleHelper.setLetterBackgroundColor(props.letterStatus)};
-  transition-delay: ${props=> `${0.15 * props.letterNumber}s`};
+  transition-delay: ${props=> `${(0.25 * props.letterNumber) + 0.25}s`};
   transition-property: background-color;
   margin: 0 5px;
   border-radius: 8px;
-  color: white;
-  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: ${animation};
 `
+
+const Letter = styled.p`
+  animation: ${animation};
+  color: white;
+  font-weight: bold;
+`;
+
 export {
-  LetterWrapper
+  LetterWrapper,
+  Letter
 };
 
 export default LetterWrapper;

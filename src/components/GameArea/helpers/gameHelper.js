@@ -23,7 +23,7 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
   let wordIsRight;
   console.log(wordsHelper)
   if (wordToCheck.length === 5){
-    wordExist = wordsHelper.checkIfWordExist(wordToCheck.toLowerCase())
+    wordExist = wordsHelper.checkIfWordExist(wordToCheck);
   };
   if (!wordExist){
     // TODO : MESSAGE ERREUR LE MOT N'EXISTE PAS

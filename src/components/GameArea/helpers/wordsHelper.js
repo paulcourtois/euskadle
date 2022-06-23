@@ -26,11 +26,11 @@ const checkLetters = (word) => {
 };
 
 const checkIfWordExist = (word) => {
-  return !!validWords.find(wordInList => wordInList.basqueWord === word)
+  return !!validWords.find(wordInList => wordInList.basqueWord === word.toLowerCase())
 };
 
 const checkIfAttemptIsCorrect = (word) => {
-  return word === setWordOfTheDay().basqueWord
+  return word.toLowerCase() === setWordOfTheDay().basqueWord
 };
 
 const wordsHelper = {
