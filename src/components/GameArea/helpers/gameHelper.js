@@ -22,6 +22,9 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
   let wordExist;
   let wordIsRight;
   console.log(wordsHelper)
+  if (wordToCheck.length <5){
+    // TODO: MESSAGE ERREUR, MOT TROP COURT
+  };
   if (wordToCheck.length === 5){
     wordExist = wordsHelper.checkIfWordExist(wordToCheck);
   };

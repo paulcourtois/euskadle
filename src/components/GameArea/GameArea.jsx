@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 // components
 import AttemptsList from './AttemptsList';
 import Keyboard from './Keyboard';
+import ErrorMessage from './ErrorMessage';
 
 // styles
 import * as S from './styles';
@@ -32,6 +33,7 @@ const GameArea = () => {
 
   console.log(wordAttempt, 'test')
   return <S.GameAreaWrapper>
+    <ErrorMessage message={'Entrez un mot de 5 lettres'} />
     <AttemptsList selected={[selectedLetter,selectedAttempt]} wordAttempt={wordAttempt} />
     <Keyboard 
       selectedLetter={selectedLetter}

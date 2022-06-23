@@ -41,12 +41,14 @@ const Keyboard = ({
    setGameState
  )
   }
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeyboardInput);
     return () => {
         window.removeEventListener("keydown", handleKeyboardInput);
     };
 }, [handleKeyboardInput]);
+
   const displayKeyboard = (mapping) => mapping.map(azertyLine => <S.KeyboardLine key={azertyLine[0]}>
     {azertyLine.map(azertyKey=> <KeyInput 
     key={azertyKey}
