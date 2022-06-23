@@ -29,6 +29,7 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
   }
   if (wordExist){
     wordIsRight = wordsHelper.checkIfAttemptIsCorrect(wordToCheck);
+    wordsHelper.checkLetters(wordToCheck, selectedAttempt)
     if (wordIsRight) {
       setGameState('victory')
     } else selectedAttempt < 5 

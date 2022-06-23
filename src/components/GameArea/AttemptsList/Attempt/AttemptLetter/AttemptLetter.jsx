@@ -10,8 +10,9 @@ const AttemptLetter = ({
   selected
 }) => {
   const isLetterSelected = selected[0] === letterNumber && selected[1] === attemptNumber;
+  const letterHasValue = !!(selected[1] === attemptNumber && wordAttempt[attemptNumber][letterNumber])
 
-  return <S.LetterWrapper isLetterSelected={isLetterSelected} letterHasValue={!!(selected[1] === attemptNumber && wordAttempt[letterNumber])}>
+  return <S.LetterWrapper isLetterSelected={isLetterSelected} letterHasValue={letterHasValue}>
     {wordAttempt[attemptNumber][letterNumber]}
   </S.LetterWrapper>
 };

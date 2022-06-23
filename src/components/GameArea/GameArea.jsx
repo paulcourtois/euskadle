@@ -11,7 +11,11 @@ import * as S from './styles';
 const GameArea = () => {
   const [selectedLetter, setSelectedLetter] = useState(0);
   const [selectedAttempt, setSelectedAttempt] = useState(0)
-  const [wordAttempt, setWordAttempt] = useState(['','','','','']);
+  const [wordAttempt, setWordAttempt] = useState([
+    '',
+    '',
+    '',
+    '','']);
   const [gameState, setGameState] = useState('running');
 
   console.log(wordAttempt, 'test')

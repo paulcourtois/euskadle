@@ -1,29 +1,40 @@
 // 5 letters words list
 import validWords from '../../../../../euskarra-dico/5LettersBasqueWords.json';
-
-const checkIfWordExist = (word) => {
-  console.log(validWords)
-  return !!validWords.find(wordInList => wordInList.basqueWord === word)
-}
-
-const getNumberInsideInterval =(input)=>{
-  return Math.floor((input/ 100000000) * (validWords.length + 1))
-};
+import shuffledWords from '../../../../../euskarra-dico/shuffled5LettersWords.json';
+import moment from 'moment';
 
 const setWordOfTheDay = () => {
-  let today = new Date()
-  let numberForToday = Number('' + today.getUTCDate() + today.getUTCFullYear() + today.getUTCMonth());
-  console.log('WotD', validWords[getNumberInsideInterval(numberForToday)].basqueWord)
-  return validWords[getNumberInsideInterval(numberForToday)].basqueWord
+  const gameStart = moment("2022-06-23 00:01");
+  const today = moment();
+  const currentDayNumber = today.diff(gameStart, 'days');
+  const wordIndex = currentDayNumber % validWords.length;
+  return shuffledWords[wordIndex]
 }
+const checkLetters = (word) => {
+  const wordAsArray = word.split('');
+  const wordOfTheDayAsArray = setWordOfTheDay().basqueWord.split('');
+
+  wordAsArray.map((letter, index)=>{
+    const isLetterInWord = wordOfTheDayAsArray.includes(letter)
+    if (isLetterInWord){
+      const isLetterWellPlaced = letter === wordOfTheDayAsArray[index];
+      return isLetterWellPlaced ? "placed" : "inWord" 
+    } else return "notInWord"
+  });
+};
+
+const checkIfWordExist = (word) => {
+  return !!validWords.find(wordInList => wordInList.basqueWord === word)
+};
 
 const checkIfAttemptIsCorrect = (word) => {
-  return word === setWordOfTheDay()
+  return word === setWordOfTheDay().basqueWord
 };
 
 const wordsHelper = {
+  checkLetters,
   checkIfWordExist,
-  checkIfAttemptIsCorrect
+  checkIfAttemptIsCorrect,
 };
 
 export default wordsHelper
