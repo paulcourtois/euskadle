@@ -10,10 +10,16 @@ const AttemptLetter = ({
   selected
 }) => {
   const isLetterSelected = selected[0] === letterNumber && selected[1] === attemptNumber;
-  const letterHasValue = !!(selected[1] === attemptNumber && wordAttempt[attemptNumber][letterNumber])
+  const letterHasValue = !!(selected[1] === attemptNumber && wordAttempt[attemptNumber].word[letterNumber]);
+  const letterStatus = wordAttempt[attemptNumber].status[letterNumber]
 
-  return <S.LetterWrapper isLetterSelected={isLetterSelected} letterHasValue={letterHasValue}>
-    {wordAttempt[attemptNumber][letterNumber]}
+  return <S.LetterWrapper 
+    isLetterSelected={isLetterSelected} 
+    letterHasValue={letterHasValue}
+    letterStatus={letterStatus}
+    letterNumber={letterNumber}
+  >
+    {wordAttempt[attemptNumber].word[letterNumber]}
   </S.LetterWrapper>
 };
 

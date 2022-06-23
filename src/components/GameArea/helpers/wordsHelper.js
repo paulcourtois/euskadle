@@ -8,13 +8,15 @@ const setWordOfTheDay = () => {
   const today = moment();
   const currentDayNumber = today.diff(gameStart, 'days');
   const wordIndex = currentDayNumber % validWords.length;
-  return shuffledWords[wordIndex]
+  const wordOfTheDay = shuffledWords[wordIndex]
+  console.log('WOTD', wordOfTheDay)
+  return wordOfTheDay
 }
 const checkLetters = (word) => {
   const wordAsArray = word.split('');
-  const wordOfTheDayAsArray = setWordOfTheDay().basqueWord.split('');
+  const wordOfTheDayAsArray = setWordOfTheDay().basqueWord.toUpperCase().split('');
 
-  wordAsArray.map((letter, index)=>{
+  return wordAsArray.map((letter, index)=>{
     const isLetterInWord = wordOfTheDayAsArray.includes(letter)
     if (isLetterInWord){
       const isLetterWellPlaced = letter === wordOfTheDayAsArray[index];

@@ -4,8 +4,8 @@ const handleLetterKeyPress = (keyValue, selectedAttempt, selectedLetter, setSele
   if (selectedLetter < 5){
     setWordAttempt(word=> {
       let words = [...word];
-      let wordToModify = word[selectedAttempt].concat(keyValue);
-      words[selectedAttempt] = wordToModify;
+      let wordToModify = word[selectedAttempt].word.concat(keyValue);
+      words[selectedAttempt].word = wordToModify;
       return words
     })
     setSelectedLetter(selectedLetter + 1);
@@ -17,7 +17,8 @@ const goToNextAttempt = (setSelectedAttempt, setSelectedLetter) => {
   setSelectedLetter(0)
 }
 
-const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState)=> {
+
+const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt)=> {
   let wordExist;
   let wordIsRight;
   console.log(wordsHelper)
@@ -29,7 +30,12 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
   }
   if (wordExist){
     wordIsRight = wordsHelper.checkIfAttemptIsCorrect(wordToCheck);
-    wordsHelper.checkLetters(wordToCheck, selectedAttempt)
+    setWordAttempt(word=> {
+      let words = [...word];
+      words[selectedAttempt].status = wordsHelper.checkLetters(wordToCheck, selectedAttempt)
+      ;
+      return words
+    })
     if (wordIsRight) {
       setGameState('victory')
     } else selectedAttempt < 5 
@@ -41,8 +47,8 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
 const handleReturnKeyPress = (setWordAttempt, setSelectedLetter, selectedAttempt)=> {
   setWordAttempt(word=> {
     let words = [...word];
-    let wordToModify = word[selectedAttempt].slice(0, -1);
-    words[selectedAttempt] = wordToModify;
+    let wordToModify = word[selectedAttempt].word.slice(0, -1);
+    words[selectedAttempt].word = wordToModify;
     return words
   })
   setSelectedLetter(letterNumber=> letterNumber> 0 ? letterNumber - 1 : letterNumber)
@@ -59,7 +65,7 @@ const handleKeyPressOrKeyboardInput = (
   setGameState
   ) => {
     if (keyValue === "enter"){
-      return handleEnterKeyPress(wordAttempt[selectedAttempt], selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState)
+      return handleEnterKeyPress(wordAttempt[selectedAttempt].word, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt)
     }
     if(keyValue === "return"){
       return handleReturnKeyPress(setWordAttempt, setSelectedLetter, selectedAttempt)

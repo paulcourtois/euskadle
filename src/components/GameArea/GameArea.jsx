@@ -12,10 +12,22 @@ const GameArea = () => {
   const [selectedLetter, setSelectedLetter] = useState(0);
   const [selectedAttempt, setSelectedAttempt] = useState(0)
   const [wordAttempt, setWordAttempt] = useState([
-    '',
-    '',
-    '',
-    '','']);
+    {
+      word: '',
+      status: []
+    },{
+      word: '',
+      status: []
+    },{
+      word: '',
+      status: []
+    },{
+      word: '',
+      status: []
+    },{
+      word: '',
+      status: []
+    },]);
   const [gameState, setGameState] = useState('running');
 
   console.log(wordAttempt, 'test')
