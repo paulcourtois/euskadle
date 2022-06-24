@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import flag from '../../images/flag.svg'
+
 const HeaderWrapper = styled.header`
     width: 100%;
     height: 10%;

@@ -18,18 +18,17 @@ const goToNextAttempt = (setSelectedAttempt, setSelectedLetter) => {
 }
 
 
-const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt)=> {
+const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt, setErrorMessage)=> {
   let wordExist;
   let wordIsRight;
-  console.log(wordsHelper)
   if (wordToCheck.length <5){
-    // TODO: MESSAGE ERREUR, MOT TROP COURT
+   return setErrorMessage("Entrez un mot de 5 lettres")
   };
   if (wordToCheck.length === 5){
     wordExist = wordsHelper.checkIfWordExist(wordToCheck);
   };
   if (!wordExist){
-    // TODO : MESSAGE ERREUR LE MOT N'EXISTE PAS
+    return setErrorMessage("Désolé ce mot n'existe pas !")
   }
   if (wordExist){
     wordIsRight = wordsHelper.checkIfAttemptIsCorrect(wordToCheck);
@@ -65,10 +64,11 @@ const handleKeyPressOrKeyboardInput = (
   setSelectedAttempt, 
   wordAttempt,
   setWordAttempt,
-  setGameState
+  setGameState,
+  setErrorMessage
   ) => {
     if (keyValue === "enter"){
-      return handleEnterKeyPress(wordAttempt[selectedAttempt].word, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt)
+      return handleEnterKeyPress(wordAttempt[selectedAttempt].word, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt, setErrorMessage)
     }
     if(keyValue === "return"){
       return handleReturnKeyPress(setWordAttempt, setSelectedLetter, selectedAttempt)

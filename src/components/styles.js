@@ -9,6 +9,10 @@ body,
     margin: 0;
     padding: 0;
 }
+h1 {
+    font-weight: normal;
+    font-family: Carter One, sans-serif;
+}
 `
 const BodyWrapper = styled.div`
     width: 100%;

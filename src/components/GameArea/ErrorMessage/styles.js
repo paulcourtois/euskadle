@@ -1,4 +1,24 @@
-import styled from 'styled-components';
+import styled, { keyframes,css } from 'styled-components';
+
+const messageAnimation = keyframes`
+  0% {
+   visibility: visible;
+   opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    visibility:hidden;
+    opacity: 0;
+  }
+}
+`
+
+const animation = props => props.message &&
+  css`
+    ${messageAnimation} 1.5s linear ;
+  `
 
 const Message = styled.div`
   background-color: #ece0d7;
@@ -9,6 +29,8 @@ const Message = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  visibility:hidden;
+  animation: ${animation};
 `;
 
 export {

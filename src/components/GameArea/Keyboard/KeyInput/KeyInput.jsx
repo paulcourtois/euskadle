@@ -1,5 +1,5 @@
 // packages
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // styles
 import * as S from './styles';
@@ -19,7 +19,8 @@ const KeyInput = ({letter,
   wordAttempt,
   setWordAttempt,
   setGameState,
-  disabled
+  disabled,
+  setErrorMessage
 }) => {
 
   const setKeyContent = (key) => {
@@ -32,6 +33,18 @@ const KeyInput = ({letter,
     else return key
   };
 
+  const [currentLetterState,setCurrentLetterState] = useState();
+  useEffect(()=>{
+    let lettersState = [];
+    wordAttempt.forEach(entry=> entry.status.forEach((state,index)=> lettersState.push({
+      letter: entry.word[index],
+      state
+    })));
+    console.log(lettersState.find(letterUsed=> letterUsed.letter === letter))
+    setCurrentLetterState(lettersState.find(letterUsed=> letterUsed.letter === letter))
+  }, [wordAttempt])
+  console.log(currentLetterState)
+
   return <S.Key onClick={()=> !disabled && gameHelper
     .handleKeyPressOrKeyboardInput(
       letter, 
@@ -41,10 +54,11 @@ const KeyInput = ({letter,
       setSelectedAttempt,
       wordAttempt,
       setWordAttempt,
-      setGameState
+      setGameState,
+      setErrorMessage
     )}
     value={letter}
-    tabIndex="0"   onKeyDown={(event)=> console.log(event)}
+    state={currentLetterState?.state}
     >
     {setKeyContent(letter)}
   </S.Key>

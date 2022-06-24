@@ -18,7 +18,8 @@ const Keyboard = ({
       wordAttempt,
       setWordAttempt,
       setGameState,
-      disabled
+      disabled,
+      setErrorMessage
 }) => {
   const azertyMapping = [
     ['A','Z','E','R','T','Y','U','I','O','P'],
@@ -38,7 +39,8 @@ const Keyboard = ({
    setSelectedAttempt,
    wordAttempt,
    setWordAttempt,
-   setGameState
+   setGameState,
+   setErrorMessage
  )
   }
 
@@ -61,6 +63,7 @@ const Keyboard = ({
     setWordAttempt={setWordAttempt}
     setGameState={setGameState}
     disabled={disabled}
+    setErrorMessage={setErrorMessage}
      />)}
   </S.KeyboardLine>)
   

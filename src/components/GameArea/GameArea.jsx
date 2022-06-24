@@ -31,10 +31,11 @@ const GameArea = () => {
     },]);
   const [gameState, setGameState] = useState('running');
 
-  console.log(wordAttempt, 'test')
+  const [errorMessage, setErrorMessage] = useState('');
+
   return <S.GameAreaWrapper>
-    <ErrorMessage message={'Entrez un mot de 5 lettres'} />
-    <AttemptsList selected={[selectedLetter,selectedAttempt]} wordAttempt={wordAttempt} />
+     <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>
+    <AttemptsList selected={[selectedLetter,selectedAttempt]} wordAttempt={wordAttempt} message={errorMessage} />
     <Keyboard 
       selectedLetter={selectedLetter}
       setSelectedLetter={setSelectedLetter}
@@ -44,6 +45,7 @@ const GameArea = () => {
       setWordAttempt={setWordAttempt}
       setGameState={setGameState}
       disabled={gameState !== 'running'}
+      setErrorMessage={setErrorMessage}
     />
   </S.GameAreaWrapper>
 };
