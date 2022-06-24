@@ -8,6 +8,12 @@ const Button = styled.button`
     align-items: center;
     justify-content: center;
     background-color: #212126;
+    cursor: pointer;
+    border-style: solid;
+    :hover {
+        background-color:#50505d;
+        border-color: #010101;
+    }
 `;
 
 export {

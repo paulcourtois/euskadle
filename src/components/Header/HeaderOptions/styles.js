@@ -6,6 +6,7 @@ const OptionsWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     padding-right: 20px;
+    gap: 10px;
 `;
 
 export {
