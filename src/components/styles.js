@@ -17,7 +17,7 @@ h1 {
 const BodyWrapper = styled.div`
     width: 100%;
     height: 100vh;
-    background-color: #0e0e0f;
+    background-color: #010101;
     display: flex;
     flex-direction: column;
 `;

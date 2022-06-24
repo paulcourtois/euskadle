@@ -8,13 +8,13 @@ import HeaderOptions from './HeaderOptions';
 import * as S from './styles';
 
 
-const Header = () => {
+const Header = ({setShowModal, setModalContent}) => {
 	return <S.HeaderWrapper>
 		<S.HeaderContent>
 			<S.MainTitle>
 				EUSKADLE
 			</S.MainTitle>
-			<HeaderOptions />
+			<HeaderOptions setShowModal={setShowModal} setModalContent={setModalContent} />
 		</S.HeaderContent>
 	</S.HeaderWrapper>
 };

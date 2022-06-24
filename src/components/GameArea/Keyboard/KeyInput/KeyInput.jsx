@@ -40,10 +40,15 @@ const KeyInput = ({letter,
       letter: entry.word[index],
       state
     })));
-    console.log(lettersState.find(letterUsed=> letterUsed.letter === letter))
-    setCurrentLetterState(lettersState.find(letterUsed=> letterUsed.letter === letter))
+    console.log('beforeReduce',lettersState)
+  
+    const thisLetterState = lettersState.filter(letterUsed => letterUsed.letter === letter);
+    const letterPlaced = thisLetterState.find(letter=>letter.state === 'placed');
+    const letterInWord = thisLetterState.find(letter=> letter.state === 'inWord');
+    const letterNotInWord = thisLetterState.find(letter=> letter.state === 'notInWord');
+
+    setCurrentLetterState(letterPlaced || letterInWord || letterNotInWord)
   }, [wordAttempt])
-  console.log(currentLetterState)
 
   return <S.Key onClick={()=> !disabled && gameHelper
     .handleKeyPressOrKeyboardInput(

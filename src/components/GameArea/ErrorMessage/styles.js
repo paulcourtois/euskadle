@@ -5,7 +5,10 @@ const messageAnimation = keyframes`
    visibility: visible;
    opacity: 0;
   }
-  50% {
+  25% {
+    opacity: 1;
+  }
+  75%{
     opacity: 1;
   }
   100% {
@@ -17,12 +20,13 @@ const messageAnimation = keyframes`
 
 const animation = props => props.message &&
   css`
-    ${messageAnimation} 1.5s linear ;
+    ${messageAnimation} 2s linear ;
   `
 
 const Message = styled.div`
   background-color: #ece0d7;
-  width: 25%;
+  width: fit-content;
+  padding: 3px 10px;
   text-align: center;
   border-radius: 8px;
   margin: 0 auto;
@@ -31,6 +35,7 @@ const Message = styled.div`
   transform: translateX(-50%);
   visibility:hidden;
   animation: ${animation};
+  z-index:10;
 `;
 
 export {

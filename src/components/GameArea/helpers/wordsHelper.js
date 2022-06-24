@@ -34,6 +34,7 @@ const checkIfAttemptIsCorrect = (word) => {
 };
 
 const wordsHelper = {
+  setWordOfTheDay,
   checkLetters,
   checkIfWordExist,
   checkIfAttemptIsCorrect,
