@@ -21,7 +21,7 @@ const Endgame = ({gameState, selectedAttempt, wordAttempt}) => {
     Le mot était <span>{wordsHelper.setWordOfTheDay().basqueWord.toUpperCase()}</span>.
    </S.EndgameText>
    <S.EndgameText>
-    En langue basque, cela signifie: <span>{wordsHelper.setWordOfTheDay().frenchTranslation.toUpperCase()}</span>
+    En langue basque, cela signifie: <span>{wordsHelper.setWordOfTheDay().frenchTranslation.toUpperCase()}</span>.
    </S.EndgameText>
   </>
 };

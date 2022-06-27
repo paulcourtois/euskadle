@@ -12,7 +12,7 @@ const ModalWrapper = styled.div`
   max-width: 500px;
   width: fit-content;
   position: absolute;
-  top: 20%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #151518;
@@ -46,10 +46,33 @@ border-style: solid;
 }
 `;
 
+const ModalSubtitle = styled.h3`
+  font-weight: bold;
+  color: white;
+`;
 
+const ModalText = styled.p`
+  color:#656474;
+`;
+
+const ModalLink = styled.a`
+  text-decoration: unset;
+  color: white;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 10px;
+`
 export {
   ModalBackground,
   ModalWrapper,
   ModalHeader,
   ModalCloseButton,
+  ModalSubtitle,
+  ModalText,
+  ModalLink,
+  IconContainer
 }

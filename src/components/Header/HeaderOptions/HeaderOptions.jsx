@@ -1,5 +1,6 @@
 // packages
 import React from 'react';
+import {useDispatch} from 'react-redux';
 
 // components 
 import OptionButton from './OptionButton';
@@ -14,6 +15,7 @@ import help from '../../../images/help.svg';
 import * as S from './styles';
 
 const HeaderOptions = ({setShowModal, setModalContent}) => {
+    const dispatch = useDispatch()
     return <S.OptionsWrapper>
          <OptionButton 
         clickHandler={()=>{
@@ -25,7 +27,7 @@ const HeaderOptions = ({setShowModal, setModalContent}) => {
         <OptionButton 
         clickHandler={()=>{
             setShowModal(true);
-            setModalContent(Settings)
+            setModalContent(<Settings dispatch={dispatch}/>)
         }} 
         icon={settings} 
         tooltip={"Options"} />

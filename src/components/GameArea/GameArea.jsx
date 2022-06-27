@@ -1,5 +1,6 @@
 // packages
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux'
 
 // components
 import AttemptsList from './AttemptsList';

@@ -49,7 +49,7 @@ const Keyboard = ({
     return () => {
         window.removeEventListener("keydown", handleKeyboardInput);
     };
-}, [handleKeyboardInput]);
+});
 
   const displayKeyboard = (mapping) => mapping.map(azertyLine => <S.KeyboardLine key={azertyLine[0]}>
     {azertyLine.map(azertyKey=> <KeyInput 
