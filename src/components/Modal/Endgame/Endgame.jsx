@@ -1,6 +1,6 @@
 // packages
 import React from 'react';
-import wordsHelper from '../../GameArea/helpers/wordsHelper';
+import wordsHelper from '../../helpers/wordsHelper';
 
 // styles
 import * as S from './styles';

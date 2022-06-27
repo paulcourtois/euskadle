@@ -5,7 +5,7 @@ import React, {useEffect} from 'react';
 import KeyInput from './KeyInput';
 
 // helper
-import gameHelper from '../helpers/gameHelper';
+import gameHelper from '../../helpers/gameHelper';
 
 // styles
 import * as S from './styles';

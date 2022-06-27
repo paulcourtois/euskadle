@@ -9,7 +9,7 @@ import enterIcon from '../../../../images/enter.svg';
 import deleteIcon from '../../../../images/delete.svg';
 
 // helper
-import gameHelper from '../../helpers/gameHelper';
+import gameHelper from '../../../helpers/gameHelper';
 
 const KeyInput = ({letter,
   selectedLetter,
@@ -40,7 +40,6 @@ const KeyInput = ({letter,
       letter: entry.word[index],
       state
     })));
-    console.log('beforeReduce',lettersState)
   
     const thisLetterState = lettersState.filter(letterUsed => letterUsed.letter === letter);
     const letterPlaced = thisLetterState.find(letter=>letter.state === 'placed');

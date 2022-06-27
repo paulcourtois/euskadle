@@ -1,13 +1,12 @@
 // 5 letters words list
-import validWords from '../../../../../euskarra-dico/5LettersBasqueWords.json';
-import shuffledWords from '../../../../../euskarra-dico/shuffled5LettersWords.json';
+import shuffledWords from '../../assets/5LettersBasqueWordsDefinitive.json';
 import moment from 'moment';
 
 const setWordOfTheDay = () => {
   const gameStart = moment("2022-06-23 00:01");
   const today = moment();
   const currentDayNumber = today.diff(gameStart, 'days');
-  const wordIndex = currentDayNumber % validWords.length;
+  const wordIndex = currentDayNumber % shuffledWords.length;
   const wordOfTheDay = shuffledWords[wordIndex]
   console.log('WOTD', wordOfTheDay)
   return wordOfTheDay
@@ -26,7 +25,8 @@ const checkLetters = (word) => {
 };
 
 const checkIfWordExist = (word) => {
-  return !!validWords.find(wordInList => wordInList.basqueWord === word.toLowerCase())
+  console.log(shuffledWords)
+  return !!shuffledWords.find(wordInList => wordInList.basqueWord === word.toLowerCase())
 };
 
 const checkIfAttemptIsCorrect = (word) => {
