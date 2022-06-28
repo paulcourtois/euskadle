@@ -19,7 +19,7 @@ const GameArea = ({
 }) => {
   const [selectedLetter, setSelectedLetter] = useState(0);
   const [selectedAttempt, setSelectedAttempt] = useState(0);
-  const [wordAttempt, setWordAttempt] = useState([
+  const [wordAttempt, setWordAttempt] = useState( [
     {
       word: '',
       status: []
@@ -45,6 +45,15 @@ const GameArea = ({
   const {t} = useTranslation();
   const language = useSelector(state=>state.language);
 
+  useEffect(()=> {
+    wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(wordAttempt))
+    console.log(JSON.parse(localStorage.getItem('attempts')))
+  }, [wordAttempt])
+  useEffect(()=> {
+    console.log('init', JSON.parse(localStorage.getItem('attempts')))
+    setWordAttempt(JSON.parse(localStorage.getItem('attempts')));
+    setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word))
+  },[])
   useEffect(()=>{
     if (gameState !== 'running'){
       let timer1 = setTimeout(()=>{
