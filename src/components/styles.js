@@ -3,7 +3,8 @@ import styled, {createGlobalStyle} from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 html, 
 body,
-#___gatsby {
+#___gatsby,
+#gatsby-focus-wrapper {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -16,7 +17,7 @@ h1 {
 `
 const BodyWrapper = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #010101;
     display: flex;
     flex-direction: column;
