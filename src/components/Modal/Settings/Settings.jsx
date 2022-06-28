@@ -1,6 +1,7 @@
 // packages
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 // styles
 import * as S from '../styles';
@@ -16,9 +17,8 @@ import OptionButton from '../../Header/HeaderOptions/OptionButton';
 import { changeToSpanish, changeToFrench } from '../../../store';
 import changeLanguage from '../../../translations/changeLanguage';
 
-const Settings = ({
-  // dispatch,
-   t}) => {
+const Settings = () => {
+    const {t} = useTranslation()
   const language = useSelector(state=>state.language);
   const dispatch = useDispatch()
   return <React.Fragment key={language}>

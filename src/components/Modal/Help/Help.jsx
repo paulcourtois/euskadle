@@ -1,5 +1,6 @@
 // packages
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // styles
 import * as S from '../styles';
@@ -8,8 +9,8 @@ import * as S from '../styles';
 import Attempt from '../../GameArea/AttemptsList/Attempt'
 import AttemptLetter from '../../GameArea/AttemptsList/Attempt/AttemptLetter/AttemptLetter';
 
-const Help = ({t}) => {
-
+const Help = () => {
+  const {t} = useTranslation()
   return <>
     <S.ModalSubtitle>
     {t('help.subtitle')}

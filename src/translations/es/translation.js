@@ -18,5 +18,14 @@ export const TRANSLATIONS_ES = {
     dictionnary: "diccionario etimológico vasco",
     redactedBy:" escrito por ",
     foundError: "Si encuentra un error, o una palabra en euskera no es reconocida, por favor hágamelo saber : "
+  },
+  endgame: {
+    win: '¡Bravo!',
+    loss: 'Falló...',
+    foundIn: '¡Has encontrado en ',
+    numberOfTries_interval: "(1)[{{count}} prueba];(2-inf)[{{count}} pruebas];",
+    doBetter: "¡La próxima vez lo harás mejor!",
+    wordWas: "La palabra era ",
+    basqueTranslation: "En euskera, esto significa : "
   }
   };

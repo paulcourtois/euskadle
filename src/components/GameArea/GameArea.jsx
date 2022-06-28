@@ -1,6 +1,7 @@
 // packages
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next';
 
 // components
 import AttemptsList from './AttemptsList';
@@ -18,7 +19,6 @@ const GameArea = ({
 }) => {
   const [selectedLetter, setSelectedLetter] = useState(0);
   const [selectedAttempt, setSelectedAttempt] = useState(0);
-  console.log(useSelector(state=>state.language))
   const [wordAttempt, setWordAttempt] = useState([
     {
       word: '',
@@ -42,18 +42,20 @@ const GameArea = ({
     },]);
   const [gameState, setGameState] = useState('running');
   const [errorMessage, setErrorMessage] = useState('');
+  const {t} = useTranslation();
+  const language = useSelector(state=>state.language);
 
   useEffect(()=>{
     if (gameState !== 'running'){
       let timer1 = setTimeout(()=>{
         setShowModal(true)
-        setModalContent(Endgame({gameState, selectedAttempt, wordAttempt}))
+        setModalContent(Endgame({gameState, selectedAttempt,t, language}))
     },2001);
     return () => {
       clearTimeout(timer1);
     };
     } 
-  }, [gameState, selectedAttempt, setModalContent, setShowModal, wordAttempt])
+  }, [gameState, selectedAttempt, setModalContent, setShowModal])
   return <S.GameAreaWrapper>
     <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>
     <AttemptsList selected={[selectedLetter,selectedAttempt]} wordAttempt={wordAttempt} message={errorMessage} />

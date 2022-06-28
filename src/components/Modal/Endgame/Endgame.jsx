@@ -1,27 +1,33 @@
 // packages
 import React from 'react';
+
+// helper
 import wordsHelper from '../../helpers/wordsHelper';
 
 // styles
 import * as S from './styles';
 
-const Endgame = ({gameState, selectedAttempt, wordAttempt}) => {
+const Endgame = ({gameState, selectedAttempt, t, language}) => {
+
   return <>
   <S.EndgameTitle>
-    {gameState === "victory" ? 'Bravo !' : 'Raté...'}
+    {gameState === "victory" ? t('endgame.win') : t('endgame.loss')}
   </S.EndgameTitle>
   {gameState === "victory" 
   ? <S.EndgameText>
-  Vous avez trouvé en <span>{selectedAttempt + 1} essai{selectedAttempt + 1 > 1 && 's'}</span> !
+  {t('endgame.foundIn')} <span>{t('endgame.numberOfTries_interval', {postProcess: 'interval',count: (selectedAttempt + 1)})}</span> !
  </S.EndgameText>
   :<S.EndgameText>
-    Vous ferez mieux la prochaine fois !
+    {t('endgame.doBetter')}  
   </S.EndgameText> }
    <S.EndgameText>
-    Le mot était <span>{wordsHelper.setWordOfTheDay().basqueWord.toUpperCase()}</span>.
+   {t('endgame.wordWas')}<span>{wordsHelper.setWordOfTheDay().basqueWord.toUpperCase()}</span>.
    </S.EndgameText>
    <S.EndgameText>
-    En langue basque, cela signifie: <span>{wordsHelper.setWordOfTheDay().frenchTranslation.toUpperCase()}</span>.
+   {t('endgame.basqueTranslation')}<span>{(language === 'french') 
+   ? wordsHelper.setWordOfTheDay().frenchTranslation.toUpperCase()
+   : wordsHelper.setWordOfTheDay().spanishTranslation.toUpperCase()
+  }</span>.
    </S.EndgameText>
   </>
 };

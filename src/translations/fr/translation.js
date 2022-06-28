@@ -19,5 +19,14 @@ export const TRANSLATIONS_FR = {
     dictionnary: "dictionnaire étymologique basque",
     redactedBy:" rédigé par ",
     foundError: "Si vous trouvez une erreur, ou qu'un mot basque n'est pas reconnu, n'hésitez pas à me le signaler : "
+  },
+  endgame: {
+    win: 'Bravo !',
+    loss: 'Raté...',
+    foundIn: 'Vous avez trouvé en ',
+    numberOfTries_interval: "(1)[{{count}} essai];(2-inf)[{{count}} essais];",
+    doBetter: "Vous ferez mieux la prochaine fois !",
+    wordWas: "Le mot était ",
+    basqueTranslation: "En langue basque, cela signifie: "
   }
   };
