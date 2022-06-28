@@ -7,9 +7,10 @@ import * as S from './styles';
 const OptionButton = ({
      clickHandler,
      icon, 
-     tooltip
+     tooltip,
+     selected
     }) => {
-    return <S.Button onClick={clickHandler} title={tooltip}>
+    return <S.Button onClick={clickHandler} title={tooltip} selected={selected}>
         <img src={icon} alt={tooltip} height="20px" width="20px"/>
     </S.Button>
 }

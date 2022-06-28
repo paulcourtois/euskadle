@@ -7,6 +7,7 @@ import { TRANSLATIONS_FR } from "./fr/translation";
 i18n
  .use(initReactI18next)
  .init({
+  lng:'fr',
    resources: {
      fr: {
        translation: TRANSLATIONS_FR
@@ -17,12 +18,4 @@ i18n
    }
  });
 
- const changeLanguage = (language) => {
-  const languages = {
-    french : 'fr',
-    spanish: 'es'
-  };
-  i18n.changeLanguage(languages[language])
- };
-
-export default changeLanguage
+ export default i18n

@@ -10,9 +10,10 @@ const Button = styled.button`
     background-color: #212126;
     cursor: pointer;
     border-style: solid;
+    border-color: ${props=> props.selected && "#1d9b47"};
     :hover {
         background-color:#50505d;
-        border-color: #010101;
+        border-color: ${props=> props.selected ?"#1d9b47" :"#010101" };
     }
 `;
 

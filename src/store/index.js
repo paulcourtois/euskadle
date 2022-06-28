@@ -6,12 +6,9 @@ const languageSlice = createSlice({
     language: 'french'
   },
   reducers: {
-    changeToSpanish: state => {
-      state.language = 'spanish'
-    },
-    changeToFrench: state => {
-      state.language = 'french'
-    }
+    changeToSpanish: state => {return {...state, language: 'spanish'}}
+    ,
+    changeToFrench: state => {return {...state, language: 'french'}}
   }
 })
 

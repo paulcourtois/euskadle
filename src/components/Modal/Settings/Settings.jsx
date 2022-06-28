@@ -1,5 +1,6 @@
 // packages
 import React from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 // styles
 import * as S from '../styles';
@@ -13,33 +14,58 @@ import OptionButton from '../../Header/HeaderOptions/OptionButton';
 
 // actions
 import { changeToSpanish, changeToFrench } from '../../../store';
-const Settings = ({dispatch}) => {
+import changeLanguage from '../../../translations/changeLanguage';
 
-  return <>
+const Settings = ({
+  // dispatch,
+   t}) => {
+  const language = useSelector(state=>state.language);
+  const dispatch = useDispatch()
+  return <React.Fragment key={language}>
     <S.ModalSubtitle>
-      Paramètres de langue
+      {t('settings.subtitle')}
     </S.ModalSubtitle>
     <S.IconContainer>
-      <OptionButton icon={frenchFlag} tooltip='Français' clickHandler={()=>dispatch(changeToFrench())}/> 
+      <OptionButton 
+      icon={frenchFlag} 
+      tooltip='Français' 
+      clickHandler={()=>{dispatch(changeToFrench()); changeLanguage('french')}} 
+      selected={language === 'french'}
+      /> 
       /
-      <OptionButton icon={spainFlag} tooltip='Français' clickHandler={()=>dispatch(changeToSpanish())}/>
+      <OptionButton 
+      icon={spainFlag} 
+      tooltip='Espanol' 
+      clickHandler={()=>{dispatch(changeToSpanish()); changeLanguage('spanish')}}
+      selected={language === 'spanish'}
+      />
     </S.IconContainer>
     <S.ModalSubtitle>
-      Crédits
+    {t('settings.credits')}
     </S.ModalSubtitle>
     <S.ModalText>
-      Site développé par <S.ModalLink href={'https://www.linkedin.com/in/paul-courtois/'} target="_blank">Paul Courtois</S.ModalLink>.
+    {t('settings.developedBy')}
+ <S.ModalLink href={'https://www.linkedin.com/in/paul-courtois/'} target="_blank">Paul Courtois</S.ModalLink>.
     </S.ModalText>
     <S.ModalText>
-      Librement inspiré de <S.ModalLink href={'https://www.nytimes.com/games/wordle/index.html'} target="_blank">Wordle</S.ModalLink> et de son équivalent français <S.ModalLink href={'https://wordle.louan.me/'} target="_blank">Le Mot</S.ModalLink>.
+    {t('settings.inspiredBy')}
+ <S.ModalLink href={'https://www.nytimes.com/games/wordle/index.html'} target="_blank">Wordle</S.ModalLink> 
+  {t('settings.frenchEquivalent')}
+  <S.ModalLink href={'https://wordle.louan.me/'} target="_blank">Le Mot</S.ModalLink>.
     </S.ModalText>
     <S.ModalText>
-      La liste de mots basques provient du <S.ModalLink href={'http://projetbabel.org/basque/dictionnaire.php'} target="_blank">dictionnaire étymologique basque</S.ModalLink> rédigé par <S.ModalLink href={'https://fr.wikipedia.org/wiki/Michel_Morvan_(linguiste)'} target="_blank">Michel Morvan</S.ModalLink>.
+    {t('settings.wordsFrom')}
+ <S.ModalLink href={'http://projetbabel.org/basque/dictionnaire.php'} target="_blank">     
+  {t('settings.dictionnary')}
+</S.ModalLink> 
+{t('settings.redactedBy')}
+<S.ModalLink href={'https://fr.wikipedia.org/wiki/Michel_Morvan_(linguiste)'} target="_blank">Michel Morvan</S.ModalLink>.
     </S.ModalText>
     <S.ModalText>
-      Si vous trouvez une erreur, ou qu'un mot basque n'est pas reconnu, n'hésitez pas à me le signaler : <S.ModalLink href={'mailto:paulcourtoispaul@gmail.com'} target="_blank">paulcourtoispaul@gmail.com</S.ModalLink>
+    {t('settings.foundError')}
+ <S.ModalLink href={'mailto:paulcourtoispaul@gmail.com'} target="_blank">paulcourtoispaul@gmail.com</S.ModalLink>
     </S.ModalText>
-  </>
+  </React.Fragment>
 };
 
 export default Settings

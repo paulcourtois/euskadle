@@ -17,7 +17,8 @@ const GameArea = ({
   setModalContent
 }) => {
   const [selectedLetter, setSelectedLetter] = useState(0);
-  const [selectedAttempt, setSelectedAttempt] = useState(0)
+  const [selectedAttempt, setSelectedAttempt] = useState(0);
+  console.log(useSelector(state=>state.language))
   const [wordAttempt, setWordAttempt] = useState([
     {
       word: '',
