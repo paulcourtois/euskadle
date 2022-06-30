@@ -52,7 +52,7 @@ const GameArea = ({
   useEffect(()=> {
     console.log('init', JSON.parse(localStorage.getItem('attempts')))
     setWordAttempt(JSON.parse(localStorage.getItem('attempts')));
-    setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word))
+    localStorage.getItem('attempts') && setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word))
   },[])
   useEffect(()=>{
     if (gameState !== 'running'){
