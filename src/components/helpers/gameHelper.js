@@ -40,10 +40,15 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
       return words
     })
     if (wordIsRight) {
-      setGameState('victory')
-    } else selectedAttempt < 5 
-      ? goToNextAttempt(setSelectedAttempt, setSelectedLetter)
-      : setGameState('loss')// MESSAGE DE DEFAITE
+      setGameState('victory');
+      localStorage.setItem('gameState', 'victory');
+    } else { if(selectedAttempt < 5) goToNextAttempt(setSelectedAttempt, setSelectedLetter)
+      else {
+        setGameState('loss');
+        localStorage.setItem('gameState', 'loss');
+      }
+    }
+      // MESSAGE DE DEFAITE
   }
 };
 

@@ -31,5 +31,10 @@ export const TRANSLATIONS_ES = {
   errors: {
     fiveLettersWords: "Escriba una palabra de 5 letras",
     noExist: "Lo siento, esta palabra no existe."
+  },
+  tooltips: {
+    settings: "Configuración",
+    help: "Ayuda",
+    title: "Wordle en Euskara"
   }
   };

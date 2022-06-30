@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next';
+import moment from 'moment';
 
 // components
 import AttemptsList from './AttemptsList';
@@ -40,19 +41,28 @@ const GameArea = ({
       word: '',
       status: []
     },]);
-  const [gameState, setGameState] = useState('running');
+  const [gameState, setGameState] = useState(localStorage.getItem('gameState') || 'running');
   const [errorMessage, setErrorMessage] = useState('');
   const {t} = useTranslation();
   const language = useSelector(state=>state.language);
-
+  console.log(gameState)
   useEffect(()=> {
     wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(wordAttempt))
-    console.log(JSON.parse(localStorage.getItem('attempts')))
-  }, [wordAttempt])
+  }, [selectedAttempt, gameState])
   useEffect(()=> {
-    console.log('init', JSON.parse(localStorage.getItem('attempts')))
-    setWordAttempt(JSON.parse(localStorage.getItem('attempts')));
-    localStorage.getItem('attempts') && setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word))
+    if (moment().diff(localStorage.getItem('lastVisit'), 'days') >= 1) {
+      setGameState('running')
+      localStorage.clear()
+    } else{
+      localStorage.getItem('attempts') && setWordAttempt(JSON.parse(localStorage.getItem('attempts')));
+      console.log(    localStorage.getItem('attempts') && JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word)
+      )
+      localStorage.getItem('attempts') && setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word))
+    
+    }
+  
+    localStorage.setItem('lastVisit', moment())
+
   },[])
   useEffect(()=>{
     if (gameState !== 'running'){
@@ -65,6 +75,7 @@ const GameArea = ({
     };
     } 
   }, [gameState, selectedAttempt, setModalContent, setShowModal])
+
   return <S.GameAreaWrapper>
     <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>
     <AttemptsList selected={[selectedLetter,selectedAttempt]} wordAttempt={wordAttempt} message={errorMessage} />
