@@ -27,5 +27,9 @@ export const TRANSLATIONS_ES = {
     doBetter: "¡La próxima vez lo harás mejor!",
     wordWas: "La palabra era ",
     basqueTranslation: "En euskera, esto significa : "
+  },
+  errors: {
+    fiveLettersWords: "Escriba una palabra de 5 letras",
+    noExist: "Lo siento, esta palabra no existe."
   }
   };

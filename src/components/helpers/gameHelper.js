@@ -1,4 +1,5 @@
 import wordsHelper from './wordsHelper';
+import i18n from '../../translations/i18n';
 
 const handleLetterKeyPress = (keyValue, selectedAttempt, selectedLetter, setSelectedLetter, setWordAttempt ) => {
   if (selectedLetter < 5){
@@ -22,13 +23,13 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
   let wordExist;
   let wordIsRight;
   if (wordToCheck.length <5){
-   return setErrorMessage("Entrez un mot de 5 lettres")
+   return setErrorMessage(i18n.t('errors.fiveLettersWords'))
   };
   if (wordToCheck.length === 5){
     wordExist = wordsHelper.checkIfWordExist(wordToCheck);
   };
   if (!wordExist){
-    return setErrorMessage("Désolé ce mot n'existe pas !")
+    return setErrorMessage(i18n.t('errors.noExist'))
   }
   if (wordExist){
     wordIsRight = wordsHelper.checkIfAttemptIsCorrect(wordToCheck);

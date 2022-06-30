@@ -28,5 +28,14 @@ export const TRANSLATIONS_FR = {
     doBetter: "Vous ferez mieux la prochaine fois !",
     wordWas: "Le mot était ",
     basqueTranslation: "En langue basque, cela signifie: "
+  },
+  errors: {
+    fiveLettersWords: "Entrez un mot de 5 lettres",
+    noExist: "Désolé ce mot n'existe pas !"
+  },
+  tooltips: {
+    settings: "Paramètres",
+    help: "Aide",
+    title: "Wordle en Euskara"
   }
   };

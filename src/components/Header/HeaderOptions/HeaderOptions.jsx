@@ -32,11 +32,11 @@ const HeaderOptions = ({setShowModal, setModalContent}) => {
             setModalContent(<Help t={t}/>)
         }} 
          icon={help} 
-         tooltip={"Aide"} />
+         tooltip={t('tooltips.help')} />
         <OptionButton 
         clickHandler={handleClickOnSettings} 
         icon={settings} 
-        tooltip={"Options"} />
+        tooltip={t('tooltips.settings')} />
        
     </S.OptionsWrapper>
 };
