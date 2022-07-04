@@ -18,8 +18,14 @@ const goToNextAttempt = (setSelectedAttempt, setSelectedLetter) => {
   setSelectedLetter(0)
 }
 
+const setScore = (attemptNumber, currentScore) => {
+  let newScore = JSON.parse(currentScore);
+  newScore = {...newScore};
+  newScore[attemptNumber] = newScore[attemptNumber] + 1
+  localStorage.setItem('score', JSON.stringify(newScore))
+}
 
-const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt, setErrorMessage)=> {
+const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt, setErrorMessage, score)=> {
   let wordExist;
   let wordIsRight;
   if (wordToCheck.length <5){
@@ -41,10 +47,13 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
     })
     if (wordIsRight) {
       setGameState('victory');
+      setScore(selectedAttempt, score)
+      
       localStorage.setItem('gameState', 'victory');
     } else { if(selectedAttempt < 5) goToNextAttempt(setSelectedAttempt, setSelectedLetter)
       else {
         setGameState('loss');
+        setScore(selectedAttempt, 6)
         localStorage.setItem('gameState', 'loss');
       }
     }
@@ -71,10 +80,20 @@ const handleKeyPressOrKeyboardInput = (
   wordAttempt,
   setWordAttempt,
   setGameState,
-  setErrorMessage
+  setErrorMessage,
+  score
   ) => {
     if (keyValue === "enter"){
-      return handleEnterKeyPress(wordAttempt[selectedAttempt].word, selectedAttempt, setSelectedAttempt, setSelectedLetter, setGameState, setWordAttempt, setErrorMessage)
+      return handleEnterKeyPress(
+        wordAttempt[selectedAttempt].word,
+         selectedAttempt, 
+         setSelectedAttempt, 
+         setSelectedLetter, 
+         setGameState, 
+         setWordAttempt, 
+         setErrorMessage,
+         score
+         )
     }
     if(keyValue === "return"){
       return handleReturnKeyPress(setWordAttempt, setSelectedLetter, selectedAttempt)
