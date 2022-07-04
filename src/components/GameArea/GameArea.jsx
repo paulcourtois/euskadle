@@ -41,7 +41,7 @@ const GameArea = ({
       word: '',
       status: []
     },]);
-  const [gameState, setGameState] = useState(localStorage.getItem('gameState') || 'running');
+  const [gameState, setGameState] = useState( typeof window !== 'undefined' && localStorage.getItem('gameState') || 'running');
   const [errorMessage, setErrorMessage] = useState('');
   const {t} = useTranslation();
   const language = useSelector(state=>state.language);
@@ -52,7 +52,7 @@ const GameArea = ({
   useEffect(()=> {
     if (moment().diff(localStorage.getItem('lastVisit'), 'days') >= 1) {
       setGameState('running')
-      localStorage.clear()
+      typeof window !== 'undefined' && localStorage.clear()
     } else{
       localStorage.getItem('attempts') && setWordAttempt(JSON.parse(localStorage.getItem('attempts')));
       console.log(    localStorage.getItem('attempts') && JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word)
