@@ -12,6 +12,8 @@ const Score = ({t, selectedAttempt}) => {
   const subtitle = t('endgame.victory_interval', {postProcess: 'interval',count: (numberOfGames - currentScore[6])}) 
   + ' / '
   + t('endgame.defeat_interval', {postProcess: 'interval',count: (currentScore[6])})
+
+  
   return <S.ScoreWrapper>
     <S.EndgameTitle>Scores</S.EndgameTitle>
     <S.EndgameText>
@@ -19,6 +21,7 @@ const Score = ({t, selectedAttempt}) => {
     </S.EndgameText>
 
     {currentScore.map((score,index )=>{
+      console.log('index ', index, selectedAttempt, ' SA ')
           const winPercent = (score / numberOfGames)*100
       return <S.Scoreline>
         <p>{index === 6 ? 'X' : index + 1}</p>
@@ -26,7 +29,7 @@ const Score = ({t, selectedAttempt}) => {
         index={index} 
         winPercent={winPercent} 
         title={`${parseInt(winPercent)}%`}
-        currentGameResult={(index === 6 && localStorage.getItem('gameState') === 'loss') || index === selectedAttempt}
+        currentGameResult={(index === 6 && localStorage.getItem('gameState') === 'loss') || (localStorage.getItem('gameState') !== 'loss') && index === selectedAttempt}
         >
           <div><S.Score>{score}</S.Score></div>
         </S.ScoreBar>

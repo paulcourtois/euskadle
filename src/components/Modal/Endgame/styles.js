@@ -41,14 +41,14 @@ const ScoreBar = styled.div`
     text-align: right;
     position: relative;
     border-radius: 6px;
+    display: flex;
+    align-items: center;
   }
 `
 
 const Score = styled.p`
   position:absolute;
-  top: -50%;
   right: 0;
-  transform: translateY(-50%);
   color:black;
   padding: 5px;
 `

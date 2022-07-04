@@ -10,7 +10,7 @@ import wordsHelper from '../../helpers/wordsHelper';
 import * as S from './styles';
 
 const Endgame = ({gameState, selectedAttempt, t, language}) => {
-
+console.log(selectedAttempt, 'YO')
   return <>
   <S.EndgameTitle>
     {gameState === "victory" ? t('endgame.win') : t('endgame.loss')}
