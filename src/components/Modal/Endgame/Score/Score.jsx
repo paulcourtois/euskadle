@@ -5,7 +5,7 @@ import React from 'react';
 import * as S from '../styles';
 
 const Score = ({t, selectedAttempt}) => {
-  const currentScore = JSON.parse(localStorage.getItem('score'));
+  const currentScore = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('score'));
   const numberOfGames = currentScore.reduce(
     (previousValue, currentValue) => previousValue + currentValue
     );
