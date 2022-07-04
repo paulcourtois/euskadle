@@ -22,6 +22,8 @@ export const TRANSLATIONS_ES = {
   endgame: {
     win: '¡Bravo!',
     loss: 'Falló...',
+    victory_interval : "(0-1)[{{count}} victoria];(2-inf)[{{count}} victorias];",
+    defeat_interval : "(0-1)[{{count}} derrota];(2-inf)[{{count}} derrotas];",
     foundIn: '¡Has encontrado en ',
     numberOfTries_interval: "(1)[{{count}} prueba];(2-inf)[{{count}} pruebas];",
     doBetter: "¡La próxima vez lo harás mejor!",
