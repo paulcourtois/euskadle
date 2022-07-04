@@ -7,9 +7,6 @@ const Key = styled.div`
   @media (max-width: 1250px) {
     height: 40px;
   };
-  @media (max-width: 800px) {
-    height: 32px;
-  };
   margin: 5px 2px;
   background-color: ${props=> styleHelper.setKeyboardBabckgroundcolor(props)};
   color: white;
