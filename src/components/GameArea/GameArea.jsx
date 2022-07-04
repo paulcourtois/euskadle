@@ -53,15 +53,7 @@ const GameArea = ({
     console.log('yo',localStorage.getItem('lastVisit'))
 
     if(!localStorage.getItem('score')){
-      localStorage.setItem('score',JSON.stringify({
-        0: 0,
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5:0,
-        6:0
-      }))
+      localStorage.setItem('score',JSON.stringify([0,0,0,0,0,0,0]))
     }
     if (moment().diff(localStorage.getItem('lastVisit'), 'days') >= 1) {
       setGameState('running')
@@ -74,8 +66,13 @@ const GameArea = ({
       localStorage.getItem('attempts') && setWordAttempt(JSON.parse(localStorage.getItem('attempts')));
       console.log(    localStorage.getItem('attempts') && JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word)
       )
-      localStorage.getItem('attempts') && setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word))
-    
+      if (gameState !== 'running'){
+        setSelectedLetter(6)
+        setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word) - 1)
+      } else {
+        localStorage.getItem('attempts') && setSelectedAttempt(JSON.parse(localStorage.getItem('attempts')).findIndex(element => !element.word))
+      }
+
     }
   
     localStorage.setItem('lastVisit', moment())

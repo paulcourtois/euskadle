@@ -1,6 +1,8 @@
 // packages
 import React from 'react';
 
+// components
+import Score from './Score'
 // helper
 import wordsHelper from '../../helpers/wordsHelper';
 
@@ -29,6 +31,7 @@ const Endgame = ({gameState, selectedAttempt, t, language}) => {
    : wordsHelper.setWordOfTheDay().spanishTranslation.toUpperCase()
   }</span>.
    </S.EndgameText>
+   <Score t={t} selectedAttempt={selectedAttempt}/>
   </>
 };
 

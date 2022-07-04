@@ -20,7 +20,7 @@ const goToNextAttempt = (setSelectedAttempt, setSelectedLetter) => {
 
 const setScore = (attemptNumber, currentScore) => {
   let newScore = JSON.parse(currentScore);
-  newScore = {...newScore};
+  newScore = [...newScore];
   newScore[attemptNumber] = newScore[attemptNumber] + 1
   localStorage.setItem('score', JSON.stringify(newScore))
 }
@@ -53,7 +53,7 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
     } else { if(selectedAttempt < 5) goToNextAttempt(setSelectedAttempt, setSelectedLetter)
       else {
         setGameState('loss');
-        setScore(selectedAttempt, 6)
+        setScore( 6, score)
         localStorage.setItem('gameState', 'loss');
       }
     }

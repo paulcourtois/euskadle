@@ -23,6 +23,8 @@ export const TRANSLATIONS_FR = {
   endgame: {
     win: 'Bravo !',
     loss: 'Raté...',
+    victory_interval : "(0-1)[{{count}} victoire];(2-inf)[{{count}} victoires];",
+    defeat_interval : "(0-1)[{{count}} défaite];(2-inf)[{{count}} défaites];",
     foundIn: 'Vous avez trouvé en ',
     numberOfTries_interval: "(1)[{{count}} essai];(2-inf)[{{count}} essais];",
     doBetter: "Vous ferez mieux la prochaine fois !",
