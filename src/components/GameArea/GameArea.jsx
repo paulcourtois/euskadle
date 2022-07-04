@@ -45,13 +45,11 @@ const GameArea = ({
   const [errorMessage, setErrorMessage] = useState('');
   const {t} = useTranslation();
   const language = useSelector(state=>state.language);
-  const wordsInStorage = JSON.parse(localStorage.getItem('attempts'))
-  console.log(gameState)
+  const wordsInStorage = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('attempts'))
   useEffect(()=> {
     wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(wordAttempt))
   }, [selectedAttempt, gameState])
   useEffect(()=> {
-    console.log('yo',localStorage.getItem('lastVisit'))
 
     if(!localStorage.getItem('score')){
       localStorage.setItem('score',JSON.stringify([0,0,0,0,0,0,0]))
@@ -65,16 +63,11 @@ const GameArea = ({
       typeof window !== 'undefined' && clearStorage()
     } else{
       localStorage.getItem('attempts') && setWordAttempt(wordsInStorage);
-      console.log(    localStorage.getItem('attempts') && wordsInStorage.findIndex(element => !element.word)
-      )
+    }
       if (gameState !== 'running'){
         setSelectedLetter(6)
-        console.log('YIHA', selectedAttempt)
         const attemptAccordingToGameState = gameState === 'victory' ? 5 : 6
-        console.log('TEST', wordsInStorage.findIndex(element => !element.word) )
         setSelectedAttempt(wordsInStorage.findIndex(element => !element.word) !== -1 ? wordsInStorage.findIndex(element => !element.word) - 1 : attemptAccordingToGameState )
-        console.log('YIHAFTERSET', selectedAttempt)
-
       } else {
         localStorage.getItem('attempts') && setSelectedAttempt(wordsInStorage.findIndex(element => !element.word))
       }

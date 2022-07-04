@@ -25,7 +25,6 @@ const checkLetters = (word) => {
 };
 
 const checkIfWordExist = (word) => {
-  console.log(shuffledWords)
   return !!shuffledWords.find(wordInList => wordInList.basqueWord === word.toLowerCase())
 };
 

@@ -11,7 +11,6 @@ const Modal = ({showModal, setShowModal, children}) => {
     event.preventDefault();
     setShowModal(false);
   }
-  console.log(children)
   return showModal && ReactDOM.createPortal(
   <S.ModalBackground onClick={handleBackgroundClick}>
     <S.ModalWrapper onClick={(e)=>e.stopPropagation()}>

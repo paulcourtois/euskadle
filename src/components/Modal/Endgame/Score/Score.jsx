@@ -21,7 +21,6 @@ const Score = ({t, selectedAttempt}) => {
     </S.EndgameText>
 
     {currentScore.map((score,index )=>{
-      console.log('index ', index, selectedAttempt, ' SA ')
           const winPercent = (score / numberOfGames)*100
       return <S.Scoreline>
         <p>{index === 6 ? 'X' : index + 1}</p>

@@ -19,7 +19,6 @@ const HeaderOptions = ({setShowModal, setModalContent}) => {
     const dispatch = useDispatch();
     const {t} = useTranslation();
     const currentLanguage = useSelector(state=>state.language)
-    console.log(currentLanguage)
     
     const handleClickOnSettings = () => {
         setShowModal(true);
