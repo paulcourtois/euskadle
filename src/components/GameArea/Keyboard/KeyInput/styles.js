@@ -12,10 +12,13 @@ const Key = styled.div`
   justify-content: center;
   cursor: pointer;
   border-radius: 8px;
-  :hover{
-    background-color: ${props=> styleHelper.setKeyboardBabckgroundcolor(props)}80;
-  }
   opacity: ${props=> props.state === 'notInWord' && 0.5};
+  
+  @media (hover: hover){
+    :hover{
+      background-color: ${props=> styleHelper.setKeyboardBabckgroundcolor(props)}80;
+    }
+  }
 `;
 
 export {
