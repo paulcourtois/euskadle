@@ -52,7 +52,7 @@ const Keyboard = ({
     };
 });
 
-  const currentScore = localStorage.getItem('score');
+  const currentScore = typeof window !== 'undefined' && localStorage.getItem('score');
 
   const displayKeyboard = (mapping) => mapping.map(azertyLine => <S.KeyboardLine key={azertyLine[0]}>
     {azertyLine.map(azertyKey=> <KeyInput 
