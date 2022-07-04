@@ -41,14 +41,14 @@ const GameArea = ({
       word: '',
       status: []
     },]);
-  const [gameState, setGameState] = useState( typeof window !== 'undefined' && localStorage.getItem('gameState') || 'running');
+  const [gameState, setGameState] = useState( (typeof window !== 'undefined' && localStorage.getItem('gameState')) || 'running');
   const [errorMessage, setErrorMessage] = useState('');
   const {t} = useTranslation();
   const language = useSelector(state=>state.language);
   const wordsInStorage = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('attempts'))
   useEffect(()=> {
     wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(wordAttempt))
-  }, [selectedAttempt, gameState])
+  }, [selectedAttempt, gameState, wordAttempt])
   useEffect(()=> {
 
     if(!localStorage.getItem('score')){
@@ -71,11 +71,8 @@ const GameArea = ({
       } else {
         localStorage.getItem('attempts') && setSelectedAttempt(wordsInStorage.findIndex(element => !element.word))
       }
-
-    }
-  
     localStorage.setItem('lastVisit', moment())
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   useEffect(()=>{
     if (gameState !== 'running'){
@@ -87,7 +84,7 @@ const GameArea = ({
       clearTimeout(timer1);
     };
     } 
-  }, [gameState, selectedAttempt, setModalContent, setShowModal])
+  }, [gameState, selectedAttempt, setModalContent, setShowModal, language, t])
 
   return <S.GameAreaWrapper>
     <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>

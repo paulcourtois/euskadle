@@ -1,7 +1,7 @@
 // packages
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 // components 
 import OptionButton from './OptionButton';
@@ -18,7 +18,6 @@ import * as S from './styles';
 const HeaderOptions = ({setShowModal, setModalContent}) => {
     const dispatch = useDispatch();
     const {t} = useTranslation();
-    const currentLanguage = useSelector(state=>state.language)
     
     const handleClickOnSettings = () => {
         setShowModal(true);

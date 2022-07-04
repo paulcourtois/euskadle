@@ -28,7 +28,7 @@ const Score = ({t, selectedAttempt}) => {
         index={index} 
         winPercent={winPercent} 
         title={`${parseInt(winPercent)}%`}
-        currentGameResult={(index === 6 && localStorage.getItem('gameState') === 'loss') || (localStorage.getItem('gameState') !== 'loss') && index === selectedAttempt}
+        currentGameResult={(index === 6 && localStorage.getItem('gameState') === 'loss') || (localStorage.getItem('gameState') !== 'loss' && index === selectedAttempt)}
         >
           <div><S.Score>{score}</S.Score></div>
         </S.ScoreBar>

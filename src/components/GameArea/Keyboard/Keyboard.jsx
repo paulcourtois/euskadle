@@ -29,21 +29,22 @@ const Keyboard = ({
   const handleKeyboardInput = (keyboardEvent) => {
     const typedKey = (keyboardEvent.key === 'Backspace' && 'return')
     || (keyboardEvent.key === 'Enter' && 'enter') 
-    || keyboardEvent.key.length === 1 && ((/[a-zA-Z]/).test(keyboardEvent.key) && keyboardEvent.key.toUpperCase())
+    || (keyboardEvent.key.length === 1 && ((/[a-zA-Z]/).test(keyboardEvent.key) && keyboardEvent.key.toUpperCase()))
+
    !disabled && typedKey && gameHelper
- .handleKeyPressOrKeyboardInput(
-   typedKey, 
-   selectedLetter, 
-   setSelectedLetter, 
-   selectedAttempt, 
-   setSelectedAttempt,
-   wordAttempt,
-   setWordAttempt,
-   setGameState,
-   setErrorMessage,
-   currentScore
- )
-  }
+    .handleKeyPressOrKeyboardInput(
+      typedKey, 
+      selectedLetter, 
+      setSelectedLetter, 
+      selectedAttempt, 
+      setSelectedAttempt,
+      wordAttempt,
+      setWordAttempt,
+      setGameState,
+      setErrorMessage,
+      currentScore
+    )
+  };
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyboardInput);
