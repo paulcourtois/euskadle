@@ -19,6 +19,14 @@ const animation = props => props.letterStatus &&
 const LetterWrapper = styled.div`
   width: 50px;
   height: 50px;
+  @media (max-width: 1250px) {
+    width: 40px;
+    height: 40px;
+  };
+  @media (max-width: 800px) {
+    width: 32px;
+    height: 32px;
+  };
   border: 3px solid ${props=> styleHelper.setLetterBorderColor(props)};
   background-color: ${props=> styleHelper.setLetterBackgroundColor(props.letterStatus)};
   transition-delay: ${props=> `${(0.25 * props.letterNumber) + 0.25}s`};
