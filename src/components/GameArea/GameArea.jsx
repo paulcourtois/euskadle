@@ -9,6 +9,7 @@ import AttemptsList from './AttemptsList';
 import Keyboard from './Keyboard';
 import ErrorMessage from './ErrorMessage';
 import Endgame from '../Modal/Endgame';
+import Help from '../Modal/Help';
 
 // styles
 import * as S from './styles';
@@ -53,6 +54,8 @@ const GameArea = ({
   useEffect(()=> {
     console.log('TIMER', moment().isSame(localStorage.getItem('lastVisit'), 'day'))
     if(!localStorage.getItem('score')){
+      setShowModal(true)
+      setModalContent(<Help />)
       localStorage.setItem('score',JSON.stringify([0,0,0,0,0,0,0]))
     }
     if (!moment().isSame(localStorage.getItem('lastVisit'), 'day')) {
