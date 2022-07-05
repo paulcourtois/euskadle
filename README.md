@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="euskadle.gatsbyjs.io">
+  <a href="http://euskadle.gatsbyjs.io">
     <img alt="Euskadle" src="./src/images/flag.svg" width="60" />
   </a>
 </p>
@@ -12,4 +12,4 @@ In this version of the game, the language used to play is Euskara, spoken in the
 
 ## Contact 
 
-Wanna talk about it ? Send me an email at [Contact Us](mailto:paulcourtoispaul@gmail.com)
+Wanna talk about it ? Send me an email at [paulcourtoispaul@gmail.com](mailto:paulcourtoispaul@gmail.com)
