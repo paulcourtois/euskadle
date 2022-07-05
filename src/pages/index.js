@@ -1,6 +1,9 @@
 // packages
 import * as React from "react"
 import { Provider as StoreProvider} from 'react-redux';
+import { Helmet } from 'react-helmet';
+
+// translation
 import '../translations/i18n.js'
 
 //store
@@ -14,6 +17,9 @@ const IndexPage = () => {
   
   return (
     <StoreProvider store={store}>
+      <Helmet
+        defaultTitle="Euskadle, wordle en euskara"
+      />
       <App />
     </StoreProvider>
   )
