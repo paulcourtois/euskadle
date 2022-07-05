@@ -22,7 +22,7 @@ const Score = ({t, selectedAttempt}) => {
 
     {currentScore.map((score,index )=>{
           const winPercent = (score / numberOfGames)*100
-      return <S.Scoreline>
+      return <S.Scoreline key={index}>
         <p>{index === 6 ? 'X' : index + 1}</p>
         <S.ScoreBar 
         index={index} 
