@@ -64,7 +64,7 @@ const GameArea = ({
     } else{
       localStorage.getItem('attempts') && setWordAttempt(wordsInStorage);
     }
-      if (localStorage.getItem('gameState') !== 'running'){
+      if (localStorage.getItem('gameState') && localStorage.getItem('gameState') !== 'running'){
         setSelectedLetter(6)
         const attemptAccordingToGameState = gameState === 'victory' ? 5 : 6
         setSelectedAttempt(wordsInStorage.findIndex(element => !element.word) !== -1 ? wordsInStorage.findIndex(element => !element.word) - 1 : attemptAccordingToGameState )
