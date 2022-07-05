@@ -42,6 +42,7 @@ const GameArea = ({
       status: []
     },]);
   const [gameState, setGameState] = useState( (typeof window !== 'undefined' && localStorage.getItem('gameState')) || 'running');
+  console.log('GS', gameState)
   const [errorMessage, setErrorMessage] = useState('');
   const {t} = useTranslation();
   const language = useSelector(state=>state.language);

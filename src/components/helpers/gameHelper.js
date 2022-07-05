@@ -49,12 +49,12 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
       setGameState('victory');
       setScore(selectedAttempt, score)
       
-      localStorage.setItem('gameState', 'victory');
+      typeof window !== 'undefined' && localStorage.setItem('gameState', 'victory');
     } else { if(selectedAttempt < 5) goToNextAttempt(setSelectedAttempt, setSelectedLetter)
       else {
         setGameState('loss');
         setScore( 6, score)
-        localStorage.setItem('gameState', 'loss');
+        typeof window !== 'undefined' && localStorage.setItem('gameState', 'loss');
       }
     }
       // MESSAGE DE DEFAITE
