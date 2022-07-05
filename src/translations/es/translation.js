@@ -1,7 +1,8 @@
 export const TRANSLATIONS_ES = {
   help: {
     subtitle: "Reglas del juego",
-    concept: "Euskadle se basa en el concepto del programa de televisión Motus, que ha sido actualizado por aplicaciones recientes como {{wordleLink}} y su equivalente francés {{leMotLink}}.",
+    concept: "Euskadle se basa en el concepto del programa de televisión Motus, que ha sido actualizado por aplicaciones recientes como ",
+    frenchEquivalent: " y su equivalente francés ",
     rules: "Tienes 6 intentos para adivinar la palabra del día. Tras escribir una palabra válida, el color de las letras cambia para indicar su presencia en la palabra.",
     examplesTitle: "Ejemplos",
     examplePlaced: "Si la letra se vuelve verde, está presente en la palabra y bien colocada.",
