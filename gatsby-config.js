@@ -19,5 +19,11 @@ module.exports = {
       ],
       display: 'swap'
     }
-  }]
+  },
+  {
+    resolve: 'gatsby-plugin-manifest',
+    options: {
+      icon: 'src/images/flag.svg',
+    },
+  },]
 };
