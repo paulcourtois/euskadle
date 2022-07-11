@@ -22,6 +22,7 @@ const setScore = (attemptNumber, currentScore) => {
   let newScore = JSON.parse(currentScore);
   newScore = [...newScore];
   newScore[attemptNumber] = newScore[attemptNumber] + 1
+  console.log('inSetScore', newScore)
   localStorage.setItem('score', JSON.stringify(newScore))
 }
 
@@ -48,7 +49,8 @@ const handleEnterKeyPress = (wordToCheck, selectedAttempt, setSelectedAttempt, s
     if (wordIsRight) {
       setGameState('victory');
       setScore(selectedAttempt, score)
-      
+      console.log(wordIsRight)
+      console.log('before the win, mot est juste', wordIsRight)
       typeof window !== 'undefined' && localStorage.setItem('gameState', 'victory');
     } else { if(selectedAttempt < 5) goToNextAttempt(setSelectedAttempt, setSelectedLetter)
       else {
