@@ -52,7 +52,14 @@ const GameArea = ({
   console.log('test', wordsInStorage)
     console.log(typeof window)
   useEffect(()=> {
-    wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(wordAttempt))
+    const arrayToSave = wordAttempt.map(attempt=> {
+      if (attempt.status.length> 0) {
+        return attempt
+      } else {
+        return { word: '', status: []}
+      }
+    })
+    wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(arrayToSave))
   }, [selectedAttempt, gameState, wordAttempt])
   useEffect(()=> {
     console.log('TIMER', moment().isSame(localStorage.getItem('lastVisit'), 'day'))
