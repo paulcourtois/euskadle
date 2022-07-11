@@ -44,10 +44,13 @@ const GameArea = ({
     },]);
   const [gameState, setGameState] = useState( (typeof window !== 'undefined' && localStorage.getItem('gameState')) || 'running');
   console.log('GS', gameState)
+  console.log('test', wordsInStorage)
+
   const [errorMessage, setErrorMessage] = useState('');
   const {t} = useTranslation();
   const language = useSelector(state=>state.language);
   const wordsInStorage = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('attempts'))
+  
   useEffect(()=> {
     wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(wordAttempt))
   }, [selectedAttempt, gameState, wordAttempt])
