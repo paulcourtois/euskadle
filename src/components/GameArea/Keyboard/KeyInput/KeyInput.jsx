@@ -20,7 +20,8 @@ const KeyInput = ({letter,
   setWordAttempt,
   setGameState,
   disabled,
-  setErrorMessage
+  setErrorMessage,
+  score
 }) => {
 
   const setKeyContent = (key) => {
@@ -59,7 +60,8 @@ const KeyInput = ({letter,
       wordAttempt,
       setWordAttempt,
       setGameState,
-      setErrorMessage
+      setErrorMessage,
+      score
     )}
     value={letter}
     state={currentLetterState?.state}

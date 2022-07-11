@@ -26,6 +26,8 @@ const Keyboard = ({
     ['Q','S','D','F','G','H','J','K','L','M'],
     ['return','W','X','C','V','B','N', 'enter']
   ];
+  const currentScore = typeof window !== 'undefined' && localStorage.getItem('score');
+
   const handleKeyboardInput = (keyboardEvent) => {
     const typedKey = (keyboardEvent.key === 'Backspace' && 'return')
     || (keyboardEvent.key === 'Enter' && 'enter') 
@@ -53,7 +55,6 @@ const Keyboard = ({
     };
 });
 
-  const currentScore = typeof window !== 'undefined' && localStorage.getItem('score');
 
   const displayKeyboard = (mapping) => mapping.map(azertyLine => <S.KeyboardLine key={azertyLine[0]}>
     {azertyLine.map(azertyKey=> <KeyInput 
