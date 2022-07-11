@@ -4,7 +4,7 @@
   </a>
 </p>
 
-## Euskadle - wordle en euskara
+# Euskadle - wordle en euskara
 
 Euskadle is a game inspired by the french TV show 'Motus' and its web version Wordle.
 
