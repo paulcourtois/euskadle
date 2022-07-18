@@ -50,7 +50,7 @@ const KeyInput = ({
     const letterNotInWord = thisLetterState.find(letter=> letter.state === 'notInWord');
 
     setCurrentLetterState(letterPlaced || letterInWord || letterNotInWord)
-  }, [wordAttempt])
+  }, [wordAttempt, letter])
 
   const handleClickOnKey = () => !disabled && gameHelper
     .handleKeyPressOrKeyboardInput(
