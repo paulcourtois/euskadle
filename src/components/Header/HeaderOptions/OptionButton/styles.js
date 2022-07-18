@@ -14,7 +14,7 @@ const Button = styled.button`
     :hover {
         background-color:#50505d;
         border-color: ${props=> props.selected ?"#1d9b47" :"#1a1a1e" };
-    }
+    };
 `;
 
 export {

@@ -62,13 +62,13 @@ const GameArea = ({
     wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(arrayToSave))
   }, [selectedAttempt, gameState, wordAttempt])
   useEffect(()=> {
-    console.log('TIMER', moment().isSame(localStorage.getItem('lastVisit'), 'day'))
+    // console.log('TIMER', moment().isSame(localStorage.getItem('lastVisit'), 'day'))
     if(!localStorage.getItem('score')){
       setShowModal(true)
       setModalContent(<Help />)
       localStorage.setItem('score',JSON.stringify([0,0,0,0,0,0,0]))
     }
-    if (!moment().isSame(localStorage.getItem('lastVisit'), 'day')) {
+    if (!moment().isSame(moment.ISO_8601(localStorage.getItem('lastVisit')), 'day')) {
       setGameState('running')
       const clearStorage = () => {
         localStorage.removeItem('gameState');
