@@ -19,38 +19,53 @@ const GameArea = ({
   setShowModal,
   setModalContent
 }) => {
+
+  const {t} = useTranslation();
+
+  // current attempt and letter position
   const [selectedLetter, setSelectedLetter] = useState(0);
   const [selectedAttempt, setSelectedAttempt] = useState(0);
-  const [wordAttempt, setWordAttempt] = useState( [
+
+  // attempts for today's word
+  const [wordAttempt, setWordAttempt] = useState([
     {
-      word: '',
-      status: []
-    },{
-      word: '',
-      status: []
-    },{
-      word: '',
-      status: []
-    },{
-      word: '',
-      status: []
-    },{
       word: '',
       status: []
     },
     {
       word: '',
       status: []
-    },]);
-  const [gameState, setGameState] = useState( (typeof window !== 'undefined' && localStorage.getItem('gameState')) || 'running');
-  console.log('GS', gameState)
+    },
+    {
+      word: '',
+      status: []
+    },
+    {
+      word: '',
+      status: []
+    },
+    {
+      word: '',
+      status: []
+    },
+    {
+      word: '',
+      status: []
+    }
+  ]);
 
+  // state of today's game
+  const [gameState, setGameState] = useState( (typeof window !== 'undefined' && localStorage.getItem('gameState')) || 'running');
+
+  // latest error message displayed
   const [errorMessage, setErrorMessage] = useState('');
-  const {t} = useTranslation();
+
+  // selected language from store
   const language = useSelector(state=>state.language);
+
+  // words attempts from local storage
   const wordsInStorage = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('attempts'))
-  console.log('test', wordsInStorage)
-    console.log(typeof window)
+  // save current attempts to local storage so user can't clear board with reload 
   useEffect(()=> {
     const arrayToSave = wordAttempt.map(attempt=> {
       if (attempt.status.length> 0) {
@@ -60,14 +75,16 @@ const GameArea = ({
       }
     })
     wordAttempt[0].word && localStorage.setItem('attempts', JSON.stringify(arrayToSave))
-  }, [selectedAttempt, gameState, wordAttempt])
+  }, [selectedAttempt, gameState, wordAttempt]);
+
   useEffect(()=> {
-    // console.log('TIMER', moment().isSame(localStorage.getItem('lastVisit'), 'day'))
+    // on first page load, create score, show rules
     if(!localStorage.getItem('score')){
       setShowModal(true)
       setModalContent(<Help />)
       localStorage.setItem('score',JSON.stringify([0,0,0,0,0,0,0]))
-    }
+    };
+    // restart game everyday to play with new word
     if (!moment().isSame(moment.ISO_8601(localStorage.getItem('lastVisit')), 'day')) {
       setGameState('running')
       const clearStorage = () => {
@@ -75,19 +92,24 @@ const GameArea = ({
         localStorage.removeItem('attempts');
       }
       typeof window !== 'undefined' && clearStorage()
-    } else{
+    } else {
+      // if not new day and game running, get back previous attempts
       localStorage.getItem('attempts') && setWordAttempt(wordsInStorage);
     }
+      // if game was over, user can't play anymore
       if (localStorage.getItem('gameState') && localStorage.getItem('gameState') !== 'running'){
         setSelectedLetter(6)
         const attemptAccordingToGameState = gameState === 'victory' ? 5 : 6
         setSelectedAttempt(wordsInStorage.findIndex(element => !element.word) !== -1 ? wordsInStorage.findIndex(element => !element.word) - 1 : attemptAccordingToGameState )
       } else {
+        // if game was running, go back to current attempt
         localStorage.getItem('attempts') && setSelectedAttempt(wordsInStorage.findIndex(element => !element.word))
       }
     localStorage.setItem('lastVisit', moment())
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[]);
+
+  // show results when game is over
   useEffect(()=>{
     if (gameState !== 'running'){
       let timer1 = setTimeout(()=>{
@@ -102,7 +124,11 @@ const GameArea = ({
 
   return <S.GameAreaWrapper>
     <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>
-    <AttemptsList selected={[selectedLetter,selectedAttempt]} wordAttempt={wordAttempt} message={errorMessage} />
+    <AttemptsList 
+      selected={[selectedLetter,selectedAttempt]} 
+      wordAttempt={wordAttempt} 
+      message={errorMessage}
+    />
     <Keyboard 
       selectedLetter={selectedLetter}
       setSelectedLetter={setSelectedLetter}
