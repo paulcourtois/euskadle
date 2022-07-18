@@ -16,27 +16,26 @@ import help from '../../../images/help.svg';
 import * as S from './styles';
 
 const HeaderOptions = ({setShowModal, setModalContent}) => {
-    const dispatch = useDispatch();
-    const {t} = useTranslation();
-    
-    const handleClickOnSettings = () => {
-        setShowModal(true);
-        setModalContent(<Settings dispatch={dispatch} t={t}/>)
-    }
-    return <S.OptionsWrapper>
-         <OptionButton 
-        clickHandler={()=>{
-            setShowModal(true);
-            setModalContent(<Help t={t}/>)
-        }} 
-         icon={help} 
-         tooltip={t('tooltips.help')} />
-        <OptionButton 
-        clickHandler={handleClickOnSettings} 
-        icon={settings} 
-        tooltip={t('tooltips.settings')} />
-       
-    </S.OptionsWrapper>
+	const dispatch = useDispatch();
+	const {t} = useTranslation();
+	
+	const openModalWithContent = (modalContent) => {
+		setShowModal(true);
+		setModalContent(modalContent)
+	};
+
+	return <S.OptionsWrapper>
+		<OptionButton 
+			clickHandler={()=> openModalWithContent(<Help t={t}/>)} 
+			icon={help} 
+			tooltip={t('tooltips.help')} 
+		/>
+		<OptionButton 
+			clickHandler={()=>openModalWithContent(<Settings dispatch={dispatch} t={t}/>)} 
+			icon={settings} 
+			tooltip={t('tooltips.settings')} 
+		/>
+	</S.OptionsWrapper>
 };
 
 export default HeaderOptions
