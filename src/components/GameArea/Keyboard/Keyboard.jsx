@@ -12,14 +12,14 @@ import * as S from './styles';
 
 const Keyboard = ({
   selectedLetter,
-      setSelectedLetter,
-      selectedAttempt,
-      setSelectedAttempt,
-      wordAttempt,
-      setWordAttempt,
-      setGameState,
-      disabled,
-      setErrorMessage
+  setSelectedLetter,
+  selectedAttempt,
+  setSelectedAttempt,
+  wordAttempt,
+  setWordAttempt,
+  setGameState,
+  disabled,
+  setErrorMessage
 }) => {
   const azertyMapping = [
     ['A','Z','E','R','T','Y','U','I','O','P'],
@@ -29,6 +29,7 @@ const Keyboard = ({
   const currentScore = typeof window !== 'undefined' && localStorage.getItem('score');
 
   const handleKeyboardInput = (keyboardEvent) => {
+    // get key from keyboard event and formate it
     const typedKey = (keyboardEvent.key === 'Backspace' && 'return')
     || (keyboardEvent.key === 'Enter' && 'enter') 
     || (keyboardEvent.key.length === 1 && ((/[a-zA-Z]/).test(keyboardEvent.key) && keyboardEvent.key.toUpperCase()))
@@ -53,24 +54,24 @@ const Keyboard = ({
     return () => {
         window.removeEventListener("keydown", handleKeyboardInput);
     };
-});
+  });
 
 
   const displayKeyboard = (mapping) => mapping.map(azertyLine => <S.KeyboardLine key={azertyLine[0]}>
     {azertyLine.map(azertyKey=> <KeyInput 
-    key={azertyKey}
-    letter={azertyKey} 
-    selectedLetter={selectedLetter}
+      key={azertyKey}
+      letter={azertyKey} 
+      selectedLetter={selectedLetter}
       setSelectedLetter={setSelectedLetter}
-    selectedAttempt={selectedAttempt}
-    setSelectedAttempt={setSelectedAttempt}
-    wordAttempt={wordAttempt}
-    setWordAttempt={setWordAttempt}
-    setGameState={setGameState}
-    disabled={disabled}
-    setErrorMessage={setErrorMessage}
-    score={currentScore}
-     />)}
+      selectedAttempt={selectedAttempt}
+      setSelectedAttempt={setSelectedAttempt}
+      wordAttempt={wordAttempt}
+      setWordAttempt={setWordAttempt}
+      setGameState={setGameState}
+      disabled={disabled}
+      setErrorMessage={setErrorMessage}
+      score={currentScore}
+    />)}
   </S.KeyboardLine>)
   
   return <S.KeyboardWrapper>

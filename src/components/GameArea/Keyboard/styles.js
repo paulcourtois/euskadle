@@ -10,7 +10,8 @@ const KeyboardLine = styled.div`
 display: flex;
 width: fit-content;
 margin: 0 auto;
-`
+`;
+
 export {
   KeyboardWrapper,
   KeyboardLine

@@ -11,7 +11,8 @@ import deleteIcon from '../../../../images/delete.svg';
 // helper
 import gameHelper from '../../../helpers/gameHelper';
 
-const KeyInput = ({letter,
+const KeyInput = ({
+  letter,
   selectedLetter,
   setSelectedLetter,
   selectedAttempt,
@@ -35,6 +36,7 @@ const KeyInput = ({letter,
   };
 
   const [currentLetterState,setCurrentLetterState] = useState();
+
   useEffect(()=>{
     let lettersState = [];
     wordAttempt.forEach(entry=> entry.status.forEach((state,index)=> lettersState.push({
@@ -50,7 +52,7 @@ const KeyInput = ({letter,
     setCurrentLetterState(letterPlaced || letterInWord || letterNotInWord)
   }, [wordAttempt])
 
-  return <S.Key onClick={()=> !disabled && gameHelper
+  const handleClickOnKey = () => !disabled && gameHelper
     .handleKeyPressOrKeyboardInput(
       letter, 
       selectedLetter, 
@@ -62,7 +64,10 @@ const KeyInput = ({letter,
       setGameState,
       setErrorMessage,
       score
-    )}
+  );
+
+  return <S.Key 
+    onClick={handleClickOnKey}
     value={letter}
     state={currentLetterState?.state}
     >
