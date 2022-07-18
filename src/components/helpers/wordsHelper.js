@@ -8,9 +8,9 @@ const setWordOfTheDay = () => {
   const currentDayNumber = today.diff(gameStart, 'days');
   const wordIndex = currentDayNumber % shuffledWords.length;
   const wordOfTheDay = shuffledWords[wordIndex]
-  console.log('WOTD', wordOfTheDay)
   return wordOfTheDay
 }
+
 const checkLetters = (word) => {
   const wordAsArray = word.split('');
   const wordOfTheDayAsArray = setWordOfTheDay().basqueWord.toUpperCase().split('');
