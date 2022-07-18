@@ -24,7 +24,7 @@ const setLetterBackgroundColor = (letterStatus) => {
       notInWord: "#33333b"
     }
     return status[letterStatus]
-  } else return 'black'
+  } else return '#000000'
 }
 
 const styleHelper = {

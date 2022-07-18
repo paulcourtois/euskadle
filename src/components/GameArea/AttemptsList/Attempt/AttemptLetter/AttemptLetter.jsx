@@ -1,5 +1,5 @@
 // packages
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import * as S from './styles';
 
@@ -22,7 +22,9 @@ const AttemptLetter = ({
     <S.Letter
     letterStatus={letterStatus}
     letterNumber={letterNumber}
-    >{wordAttempt[attemptNumber].word[letterNumber]}</S.Letter>
+    >
+      {wordAttempt[attemptNumber].word[letterNumber]}
+    </S.Letter>
   </S.LetterWrapper>
 };
 
