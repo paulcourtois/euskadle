@@ -9,8 +9,12 @@ import wordsHelper from '../../helpers/wordsHelper';
 // styles
 import * as S from './styles';
 
-const Endgame = ({gameState, selectedAttempt, t, language}) => {
-  return <>
+const Endgame = ({
+    gameState, 
+    selectedAttempt, 
+    t, 
+    language
+  }) => <>
   <S.EndgameTitle>
     {gameState === "victory" ? t('endgame.win') : t('endgame.loss')}
   </S.EndgameTitle>
@@ -31,7 +35,6 @@ const Endgame = ({gameState, selectedAttempt, t, language}) => {
   }</span>.
    </S.EndgameText>
    <Score t={t} selectedAttempt={selectedAttempt}/>
-  </>
-};
+  </>;
 
 export default Endgame
