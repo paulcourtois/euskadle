@@ -6,7 +6,7 @@ const HeaderWrapper = styled.header`
     height: 10%;
     display: flex;
     justify-content: center;
-    background-color: #151518;
+    background-color: #212126;
 `;
 
 const HeaderContent = styled.div`

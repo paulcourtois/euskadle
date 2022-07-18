@@ -13,7 +13,7 @@ const Button = styled.button`
     border-color: ${props=> props.selected && "#1d9b47"};
     :hover {
         background-color:#50505d;
-        border-color: ${props=> props.selected ?"#1d9b47" :"#010101" };
+        border-color: ${props=> props.selected ?"#1d9b47" :"#1a1a1e" };
     }
 `;
 
