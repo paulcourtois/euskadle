@@ -85,7 +85,7 @@ const GameArea = ({
       localStorage.setItem('score',JSON.stringify([0,0,0,0,0,0,0]))
     };
     // restart game everyday to play with new word
-    if (!moment().isSame(moment(localStorage.getItem('lastVisit'), "MM-DD-YYYY"), 'day')) {
+    if (!moment().isSame(moment(localStorage.getItem('lastVisit'), "llll"), 'day')) {
       setGameState('running')
       const clearStorage = () => {
         localStorage.removeItem('gameState');
